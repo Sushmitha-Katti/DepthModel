@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image
+import matplotlib.pyplot as plt
 
 def DepthNorm(x, maxDepth):
     return maxDepth / x
@@ -53,7 +54,7 @@ def display_images(outputs, inputs=None, gt=None, is_colormap=True, is_rescale=T
         if isinstance(inputs, (list, tuple, np.ndarray)):
             x = to_multichannel(inputs[i])
             x = resize(x, shape, preserve_range=True, mode='reflect', anti_aliasing=True )
-            imgs.append(x)
+            #imgs.append(x)
 
         if isinstance(gt, (list, tuple, np.ndarray)):
             x = to_multichannel(gt[i])
@@ -70,6 +71,9 @@ def display_images(outputs, inputs=None, gt=None, is_colormap=True, is_rescale=T
             imgs.append(to_multichannel(outputs[i]))
 
         img_set = np.hstack(imgs)
+        plt.imshow(img_set)
+        plt.axis("off")
+        plt.savefig("imgggg.jpg")
         all_images.append(img_set)
 
     all_images = np.stack(all_images)

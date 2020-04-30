@@ -38,7 +38,7 @@ outputs = predict(model, inputs)
 
 # Display results
 viz = display_images(outputs.copy(), inputs.copy())
-plt.figure(figsize=(10,5))
+# plt.figure(figsize=(1,1))
 plt.imshow(viz)
 plt.savefig('test.png')
 plt.show()
